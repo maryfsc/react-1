@@ -1,1 +1,70 @@
-// Criar uma lista de objetos com altura e a idade da pessoa. E quando clicar abrir um alert com o nome.
+<!--Criar uma lista de objetos com altura e a idade da pessoa. E quando clicar abrir um alert com o nome.
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+  <title>Document</title>
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+</head>
+<body>
+  <div id="app"></div>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+
+    function ListUser(props) {
+      const showName = () => {props.onClick(props.name)};
+      return <li onClick={showName}>{props.name}</li> 
+    }
+
+    class Users extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = { 
+          list: [
+            {
+                name: 'Allen',
+                age: 26,
+                alt: 1.56
+            },
+            {
+                name: 'Toshi',
+                age: 44,
+                alt: 1.79
+            },
+            {
+                name: 'Van',
+                age: 14,
+                alt: 1.68
+            }
+          ]
+        }
+      } 
+      
+      handleClick(name) {
+        alert(name);
+      }
+
+      render() {
+        return (
+          <ul>
+            {
+              this.state.list.map((item, index) => {
+              return <ListUser key={index} name={item.name} onClick={this.handleClick} />
+              })
+            }
+          </ul> 
+        );
+      }
+    }
+
+    ReactDOM.render(
+      <Users />,
+      document.getElementById("app")
+    )
+  </script>
+</body>
+</html>
