@@ -17,7 +17,13 @@
 
     function ListUser(props) {
       const showName = () => {props.onClick(props.name)};
-      return <li onClick={showName}>{props.name}</li> 
+      return (
+          <ul>
+            <li onClick={showName}>{props.name}</li>
+            <li>{props.age}</li>
+            <li>{props.alt}</li>
+          </ul>
+          ) 
     }
 
     class Users extends React.Component {
@@ -53,7 +59,7 @@
           <ul>
             {
               this.state.list.map((item, index) => {
-              return <ListUser key={index} name={item.name} onClick={this.handleClick} />
+              return <ListUser key={index} name={item.name} age={item.age} alt={item.alt} onClick={this.handleClick} />
               })
             }
           </ul> 
