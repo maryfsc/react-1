@@ -18,25 +18,28 @@
         super(props);
         this.state = {
           badge: [
-            {name: 'Banana Peixinho'},
-            {username: 'bananafish'},
-            {imgsrc: 'http://divertindoelanchando.com.br/wp-content/uploads/2016/11/Pastel-de-Banana-Peixinho.jpg'}
+            {name: 'Banana Peixinho',
+            username: 'bananafish',
+            imgsrc: 'http://divertindoelanchando.com.br/wp-content/uploads/2016/11/Pastel-de-Banana-Peixinho.jpg'}
             ]
           }
-      } 
-        render() {
-          return 
-               {
-                this.state.badge.map((info) => {
-                    <div> 
-                      <img src={info.imgsrc} />
-                      <h1>Name:{info.name}</h1>
-                      <h3>username:{info.username}</h3>
+      }
+
+      render() {
+        return (
+          <ul>
+            {
+              this.state.badge.map(item =>  
+                    <div>
+                    <li key={item.name}>{item.name}</li>
+                    <li key={item.username}>{item.username}</li>
+                    <li key={item.imgsrc}><img src={item.imgsrc} /></li>
                     </div>
-                })
-               }
-          
-        }
+              )
+            }
+          </ul> 
+        );
+      }
     }
 
     ReactDOM.render(
