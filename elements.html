@@ -11,7 +11,30 @@
 <body>
   <div id="app"></div>
   <script>
+  	const header = React.createElement(
+  		'h1', 
+  		{id: 'superId'}, 
+  		'Banana'
+  		);
 
+  	const paragraph = React.createElement(
+  		'p', 
+  		{className: 'superPeixinho'}, 
+  		'Peixinho'
+  		);
+
+  	const wrapper = React.createElement(
+  		'div', 
+  		null,
+  		header,
+  		paragraph
+  	);
+
+
+  	ReactDOM.render(
+  		wrapper,
+  		document.getElementById('app')
+  		);
   </script>
 </body>
 </html>

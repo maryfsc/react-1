@@ -10,31 +10,53 @@
 </head>
 <body>
   <div id="app"></div>
-  <script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
     const text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In porta pharetra gravida. Morbi luctus ultricies purus eget condimentum. Vivamus sit amet est sapien. Nulla facilisi.";
 
-    function header1(props) {
-      return React.createElement("h1", null, props.text);
+    class CreateH1 extends React.Component {
+      constructor(props) {
+        super(props);
+      }
+      render() {
+        return <h1>{this.props.text}</h1>
+      }
     }
 
-    function header2(props) {
-      return React.createElement("h2", null, props.text);
+    class CreateH2 extends React.Component {
+      constructor(props) {
+        super(props);
+      }
+      render() {
+        return <h2>{this.props.text}</h2>  
+      }
+      
     }
 
-    function header3(props) {
-      return React.createElement("h3", null, props.text);
+    class CreateH3 extends React.Component {
+      constructor(props) {
+        super(props);
+      }
+      render() {
+        return <h3>{this.props.text}</h3>
+      }
     }
 
-    const wrapper = React.createElement(
-      "div", 
-      null, 
-      React.createElement(header1, {text}),
-      React.createElement(header2, {text}),
-      React.createElement(header3, {text}),
-    );
+    class WrapperContainer extends React.Component {
+      constructor(props) {
+        super(props);
+      }
+      render() {
+        return <div>
+                <CreateH1 text={text}/>
+                <CreateH2 text={text}/>
+                <CreateH3 text={text}/>      
+              </div>
+      }
+    }
 
     ReactDOM.render(
-      wrapper,
+      <WrapperContainer />,
       document.getElementById("app")
     )
   </script>

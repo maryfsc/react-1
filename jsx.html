@@ -10,25 +10,47 @@
 </head>
 <body>
   <div id="app"></div>
-  <script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
     const headerText = "Banana";
-    const paragraphText = "La la la la la la";
-    
-    function HeaderComponent(props) {
-      return React.createElement("h1", {id: "peixinho"}, props.text);
+    const paragraphText = "Peixinho";
+
+    class HeaderComponent extends React.Component {
+      constructor(props) {
+        super(props);
+      }
+
+      render() {
+        return <h1 id="banana">{this.props.text}</h1>
+      }
     }
 
-    function ParagraphComponent(props) {
-      return React.createElement("p", {id: "oi"}, "la la la la la");
+    class ParagraphComponent extends React.Component {
+      constructor(props) {
+        super(props);
+      }
+      
+      render() {
+       return <p id="oi" className="superPeixinho">{this.props.text}</p>
+      }
     }
 
-    const wrapper = React.createElement(
-      "div", 
-      null, 
-      React.createElement(HeaderComponent, {text: headerText}), React.createElement(ParagraphComponent, {text: paragraphText}));
+    class WrapperComponent extends React.Component {
+      constructor(props) {
+        super(props);
+      }
+      
+      render() {
+        return <div>
+                <HeaderComponent text={headerText} />
+                <ParagraphComponent text={paragraphText} />
+              </div>
+      }
+        
+    }
 
     ReactDOM.render(
-      wrapper,
+      <WrapperComponent />,
       document.getElementById("app")
     )
   </script>

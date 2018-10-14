@@ -13,16 +13,35 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
 
-    function ListItem() {
+    function ListItem(props) {
+      const myClick = () => {props.onClick(props.food)};
+      return <li onClick={myClick}>{props.food}</li> // não precisa usar class pq só mostra na tela
     }
 
     class FoodList extends React.Component {
       constructor(props) {
         super(props);
+        this.state = { // state sempre é um obj
+          list: [
+            {food: 'banana'},
+            {food: 'peixinho'},
+            {food: 'xuxu'}
+          ]
+        }
+      } // precisa usar class pq possui uma lógica e um estado
+      
+      handleClick(text) {
+        alert(text);
       }
+
       render() {
         return (
           <ul>
+            {
+              this.state.list.map((item, index) => {
+              return <ListItem key={index} food={item.food} onClick={this.handleClick} />
+              })
+            }
           </ul> 
         );
       }
